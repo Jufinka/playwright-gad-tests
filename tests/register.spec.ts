@@ -4,7 +4,9 @@ import { WelcomePage } from '../src/pages/welcome.page';
 import { expect, test } from '@playwright/test';
 
 test.describe('Verify register', () => {
-  test('register with correct data and login @GAD-R03-01 @GAD-R03-02 @GAD-R03-03', async ({ page }) => {
+  test('register with correct data and login @GAD-R03-01 @GAD-R03-02 @GAD-R03-03', async ({
+    page,
+  }) => {
     // Arrange
     const userFirstName = 'Janina';
     const userLastName = 'Nowak';
