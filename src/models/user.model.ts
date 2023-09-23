@@ -1,6 +1,6 @@
 export interface LoginUser {
   userEmail: string;
-  userPassword: string
+  userPassword: string;
 }
 export interface RegisterUser {
   userFirstName: string;
@@ -8,5 +8,3 @@ export interface RegisterUser {
   userEmail: string;
   userPassword: string;
 }
-
-
