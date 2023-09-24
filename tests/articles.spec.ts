@@ -32,6 +32,5 @@ test.describe('Verify articles', () => {
     const articlePage = new ArticlePage(page);
     await expect(articlePage.articleTitle).toHaveText(newArticleTitle);
     await expect(articlePage.articleBody).toHaveText(newArticleBody);
-
   });
 });
