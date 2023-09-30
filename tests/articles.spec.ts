@@ -65,30 +65,30 @@ test.describe('Verify articles', () => {
   });
 
   test.describe('Title length', () => {
-  test('reject creating article with title exceeding 128 signs @GAD-R04-02', async () => {
-    // Arrange
-    const expectedErrorMessage = 'Article was not created';
-    const articleData = randomNewArticle(129);
+    test('reject creating article with title exceeding 128 signs @GAD-R04-02', async () => {
+      // Arrange
+      const expectedErrorMessage = 'Article was not created';
+      const articleData = randomNewArticle(129);
 
-    // Act
-    await addArticleView.createArticle(articleData);
+      // Act
+      await addArticleView.createArticle(articleData);
 
-    // Assert
-    await expect(addArticleView.alertPopup).toHaveText(expectedErrorMessage);
+      // Assert
+      await expect(addArticleView.alertPopup).toHaveText(expectedErrorMessage);
+    });
+
+    test('reject creating article with title with 128 signs @GAD-R04-02', async ({
+      page,
+    }) => {
+      // Arrange
+      const articlePage = new ArticlePage(page);
+      const articleData = randomNewArticle(128);
+
+      // Act
+      await addArticleView.createArticle(articleData);
+
+      // Assert
+      await expect.soft(articlePage.articleTitle).toHaveText(articleData.title);
+    });
   });
-
-  test('reject creating article with title with 128 signs @GAD-R04-02', async ({
-    page,
-  }) => {
-    // Arrange
-    const articlePage = new ArticlePage(page);
-    const articleData = randomNewArticle(128);
-
-    // Act
-    await addArticleView.createArticle(articleData);
-
-    // Assert
-    await expect.soft(articlePage.articleTitle).toHaveText(articleData.title);
-  });
-});
 });
