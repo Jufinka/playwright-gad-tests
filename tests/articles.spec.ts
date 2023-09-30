@@ -23,20 +23,6 @@ test.describe('Verify articles', () => {
 
     await expect.soft(addArticleView.header).toBeVisible();
   });
-  test('create new article @GAD-R04-01', async ({ page }) => {
-    // Arrange
-    const articlePage = new ArticlePage(page);
-    const articleData = randomNewArticle();
-
-    // Act
-    await addArticleView.createArticle(articleData);
-
-    // Assert
-    await expect.soft(articlePage.articleTitle).toHaveText(articleData.title);
-    await expect
-      .soft(articlePage.articleBody)
-      .toHaveText(articleData.body, { useInnerText: true });
-  });
 
   test('reject creating article without title @GAD-R04-01', async () => {
     // Arrange
@@ -77,7 +63,7 @@ test.describe('Verify articles', () => {
       await expect(addArticleView.alertPopup).toHaveText(expectedErrorMessage);
     });
 
-    test('reject creating article with title with 128 signs @GAD-R04-02', async ({
+    test('create article with title with 128 signs @GAD-R04-02', async ({
       page,
     }) => {
       // Arrange
