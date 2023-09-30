@@ -64,6 +64,7 @@ test.describe('Verify articles', () => {
     await expect(addArticleView.alertPopup).toHaveText(expectedErrorMessage);
   });
 
+  test.describe('Title length', () => {
   test('reject creating article with title exceeding 128 signs @GAD-R04-02', async () => {
     // Arrange
     const expectedErrorMessage = 'Article was not created';
@@ -89,4 +90,5 @@ test.describe('Verify articles', () => {
     // Assert
     await expect.soft(articlePage.articleTitle).toHaveText(articleData.title);
   });
+});
 });
